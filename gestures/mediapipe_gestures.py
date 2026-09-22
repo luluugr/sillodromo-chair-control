@@ -14,9 +14,7 @@ Documentación:
 
 import argparse
 import math
-import os
 import platform
-import sys
 import time
 import urllib.request
 from pathlib import Path
@@ -26,36 +24,12 @@ import numpy as np
 import mediapipe as mp
 
 
-def _locate_openface():
-    """Busca openface.py junto a este script o en subcarpetas comunes,
-    sin asumir una estructura de repo fija."""
-    here = Path(__file__).resolve().parent
-    candidates = [here, here / 'openface-gestures'] + list(here.glob('*/openface.py'))
-    for c in candidates:
-        target = c if c.name == 'openface.py' else c / 'openface.py'
-        if target.is_file():
-            sys.path.insert(0, str(target.parent))
-            return
-    sys.exit(
-        'No encuentro openface.py junto a mediapipe_gestures.py ni en una '
-        'subcarpeta suya. Pásalo con la variable de entorno OPENFACE_DIR '
-        'apuntando a la carpeta que lo contiene, o copia ambos archivos '
-        'al mismo directorio.'
-    )
-
-
-if os.environ.get('OPENFACE_DIR'):
-    sys.path.insert(0, os.environ['OPENFACE_DIR'])
-else:
-    _locate_openface()
-
-from openface import GestureController, log  # noqa: E402 (misma máquina de estados)
-
-try:
+if __package__:
+    from .gesture_controller import GestureController, log
     from .config import add_config_arguments, parse_settings
-except ImportError:
+else:
+    from gesture_controller import GestureController, log
     from config import add_config_arguments, parse_settings
-
 
 FACE_MODEL_URL = (
     'https://storage.googleapis.com/mediapipe-models/'

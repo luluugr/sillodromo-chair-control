@@ -19,25 +19,6 @@
       "mouth_close_hold": 0.2,
       "invert_x": false,
       "invert_y": false
-    },
-    "openface": {
-      "threshold_x": 0.22,
-      "threshold_y": 0.16,
-      "release": 0.12,
-      "diagonal_ratio": 1.0,
-      "sustain_ratio": 0.65,
-      "hold": 0.45,
-      "mode_hold": 1.2,
-      "center_hold": 0.3,
-      "calibration": 2.0,
-      "brow": 1.5,
-      "blink": 2.5,
-      "mouth_open": 2.0,
-      "mouth_close": 1.0,
-      "mouth_hold": 0.45,
-      "mouth_close_hold": 0.2,
-      "invert_x": false,
-      "invert_y": false
     }
   }
 }

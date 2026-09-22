@@ -41,3 +41,7 @@ openface_output/
 .vscode/
 .DS_Store
 *~
+
+# Restos locales de OpenFace
+/OpenFace/
+**/openface_output/
